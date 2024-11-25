@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contador de Visitas</title>
+  <style>
+    /* Estilos CSS */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      color: #333;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      color: #007acc;
+    }
+
+    .counter {
+      font-size: 2rem;
+      color: #4caf50;
+      font-weight: bold;
+    }
+
+    footer {
+      margin-top: 20px;
+      font-size: 0.9rem;
+      color: #777;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Bienvenido a mi sitio web</h1>
+    <p>Este sitio ha sido visitado:</p>
+    <div class="counter">
+      <span id="visit-counter">Cargando...</span> veces.
+    </div>
+    <footer>
+      &copy; 2024 Mi Sitio Web
+    </footer>
+  </div>
+
+  <script>
+    // JavaScript para el contador de visitas
+    async function updateCounter() {
+      try {
+        const response = await fetch('https://api.countapi.xyz/hit/mi-sitio-github/home');
+        const data = await response.json();
+        document.getElementById('visit-counter').innerText = data.value;
+      } catch (error) {
+        console.error('Error al obtener el contador de visitas:', error);
+        document.getElementById('visit-counter').innerText = 'Error';
+      }
+    }
+    updateCounter();
+  </script>
+</body>
+</html>
