@@ -56,7 +56,8 @@
     // JavaScript para el contador de visitas
     async function updateCounter() {
       try {
-        const response = await fetch('https://api.countapi.xyz/hit/mi-sitio-github/home');
+        // Cambia el namespace y la key para tu proyecto
+        const response = await fetch('https://api.countapi.xyz/hit/palaciio-contador/homepage');
         const data = await response.json();
         document.getElementById('visit-counter').innerText = data.value;
       } catch (error) {
